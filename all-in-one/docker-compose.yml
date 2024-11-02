@@ -37,7 +37,6 @@ services:
     volumes:
       - clickhouse_data:/var/lib/clickhouse
       - ./clickhouse/:/docker-entrypoint-initdb.d/
-      - ./clickhouse/opentelemetry_zipkin.sql:/docker-entrypoint-initdb.d/opentelemetry_zipkin.sql
     environment:
       - CLICKHOUSE_USER=qryn
       - CLICKHOUSE_PASSWORD=demo
@@ -99,7 +98,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./vector/:/etc/vector/:ro
-      - ./vector/vector.toml:/etc/vector/vector.toml:ro
     depends_on:
       - qryn
     logging:
@@ -125,7 +123,6 @@ services:
     hostname: alertman
     volumes:
       - ./alertmanager/:/etc/alertmanager/
-      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     expose:
       - 9093
     ports:
