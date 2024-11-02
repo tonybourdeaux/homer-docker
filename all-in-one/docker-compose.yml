@@ -123,7 +123,7 @@ services:
     container_name: alertman
     hostname: alertman
     volumes:
-      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./alertmanager/alertmanager.yml:/etc/alertmanager/alertmanager.yml
     expose:
       - 9093
     ports:
